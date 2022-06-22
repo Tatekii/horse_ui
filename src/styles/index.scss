@@ -1,3 +1,10 @@
 @import "variables";
 
 @import "reboot";
+
+@import "mixin";
+
+// button
+@import "@/components/button/style";
+// alert
+@import "@/components/alert/style";

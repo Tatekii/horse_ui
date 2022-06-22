@@ -56,5 +56,9 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write --ignore-unknown"
     ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.3.1",
+    "classnames": "^2.3.1"
   }
 }
