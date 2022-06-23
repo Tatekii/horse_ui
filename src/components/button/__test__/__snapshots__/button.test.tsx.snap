@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Button renders correctly 1`] = `
+<button
+  class="btn btn-default"
+  type="button"
+>
+  Follow
+</button>
+`;
+
+exports[`Testing Button should not render as link button when href is undefined 1`] = `
+<button
+  class="btn btn-primary"
+  type="button"
+>
+  undefined href
+</button>
+`;
+
+exports[`Testing Button should render empty default button 1`] = `
+<button
+  class="btn btn-default"
+  id="emptyBtn"
+  type="button"
+/>
+`;
+
+exports[`Testing Button should support link button 1`] = `
+<a
+  class="btn btn-default"
+  href="google.com"
+  target="_blank"
+>
+  Google
+</a>
+`;

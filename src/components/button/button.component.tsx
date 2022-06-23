@@ -1,7 +1,6 @@
 import {
   AnchorButtonProps,
   ButtonProps,
-  ButtonType,
   NativeButtonProps,
 } from "./button.types";
 import classNames from "classnames";
@@ -22,7 +21,6 @@ const Button: React.FC<ButtonProps> = (props) => {
     rest as AnchorButtonProps & { navigate: any },
     ["navigate"]
   );
-  console.log(linkButtonRestProps);
 
   /** 点击事件，判断是否disabled和loading */
   const handleClick = (
@@ -38,11 +36,28 @@ const Button: React.FC<ButtonProps> = (props) => {
     )?.(e);
   };
 
+  // 格式化size到class名 => large => lg
+  let sizeCls = "";
+  switch (size) {
+    case "large":
+      sizeCls = "lg";
+      break;
+    case "small":
+      sizeCls = "sm";
+      break;
+    case "middle":
+    case undefined:
+      break;
+    default:
+      console.error("Button Invalid prop [size]");
+  }
+
   // classes
   const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
-    [`btn-${size}`]: size,
-    disabled: btnType === ButtonType.LINK && disabled,
+    [`btn-${sizeCls}`]: size,
+    [`btn-disabled`]: disabled,
+    disabled: btnType === "link" && disabled,
   });
 
   // 渲染a标签
@@ -69,7 +84,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.DEFAULT,
+  btnType: "default",
 };
 
 export default Button;

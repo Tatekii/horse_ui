@@ -1,25 +1,16 @@
 import { tuple } from "@/utils/types.utils";
-
-export enum ButtonSize {
-  LARGE = "lg",
-  SMALL = "sm",
-}
-
-export enum ButtonType {
-  PRIMARY = "primary",
-  DEFAULT = "default",
-  DANGER = "danger",
-  LINK = "link",
-}
+import { SizeType } from "../config-provider/size";
 
 // ant design 偷的
+const ButtonTypes = tuple("default", "primary", "link", "danger");
+export type ButtonType = typeof ButtonTypes[number];
 const ButtonHTMLTypes = tuple("submit", "button", "reset");
 export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
 
 export interface BaseButtonProps {
   className?: string;
   disabled?: boolean;
-  size?: ButtonSize;
+  size?: SizeType;
   btnType?: ButtonType;
   children: React.ReactNode;
 }

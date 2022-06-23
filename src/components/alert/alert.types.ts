@@ -1,18 +1,13 @@
-export enum AlertType {
-  SUCCESS = "success",
-  INFO = "info",
-  WARNING = "warning",
-  ERROR = "error",
-}
+import { SizeType } from "../config-provider/size";
+import { tuple } from "@/utils/types.utils";
 
-export enum AlertSize {
-  LARGE = "lg",
-  SMALL = "sm",
-}
+
+const AlertTypes = tuple("success","info","warning","error",)
+export type AlertType = typeof AlertTypes[number]
 
 export interface AlertProps {
   type?: AlertType;
-  size?: AlertSize;
+  size?: SizeType;
   closeable?: boolean;
   closeText?: string;
   closeCallback?: () => void;

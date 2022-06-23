@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "./components/button/button.component";
-import { ButtonSize, ButtonType } from "./components/button/button.types";
-import Alert from "./components/alert/alert.component";
-import { AlertType } from "./components/alert/alert.types";
+import Alert from "./components/alert/alert";
 
 function App() {
   const clickOne = () => {
@@ -14,34 +12,26 @@ function App() {
       <h2>Hello world</h2>
       <h3>Hello world</h3>
       <Alert
-        type={AlertType.INFO}
+        type="info"
         closeable
         closeText="CLOSE"
         message="here is message"
         description="here is description"
-        closeCallback={()=>console.log('close call back')}
+        closeCallback={() => console.log("close call back")}
       ></Alert>
       <Button>normal</Button>
       <Button
-        btnType={ButtonType.PRIMARY}
-        size={ButtonSize.LARGE}
+        btnType="primary"
+        size="large"
         onClick={clickOne}
         className="custom-class"
       >
         SHOW ALERT
       </Button>
-      <Button
-        btnType={ButtonType.LINK}
-        href="http://www.google.com"
-        target="blank"
-      >
+      <Button btnType="link" href="http://www.google.com" target="blank">
         LINK Normal
       </Button>
-      <Button
-        btnType={ButtonType.LINK}
-        size={ButtonSize.SMALL}
-        href="http://www.google.com"
-      >
+      <Button btnType="link" size="small" href="http://www.google.com">
         LINK small
       </Button>
     </>

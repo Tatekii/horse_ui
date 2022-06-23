@@ -1,7 +1,7 @@
 import getDataOrAriaProps from "@/utils";
 import classNames from "classnames";
 import Button from "../button/button.component";
-import { AlertProps, AlertType } from "./alert.types";
+import { AlertProps } from "./alert.types";
 
 const Alert: React.FC<AlertProps> = ({
   description,
@@ -39,12 +39,7 @@ const Alert: React.FC<AlertProps> = ({
   const dataOrAriaProps = getDataOrAriaProps(rest);
 
   return (
-    <div
-      className={classes}
-      style={style}
-      role="alert"
-      {...dataOrAriaProps}
-    >
+    <div className={classes} style={style} role="alert" {...dataOrAriaProps}>
       <div className={`alert-content`}>
         {message ? <div className={`alert-message`}>{message}</div> : null}
         {description ? (
@@ -57,7 +52,7 @@ const Alert: React.FC<AlertProps> = ({
 };
 
 Alert.defaultProps = {
-  type: AlertType.INFO,
+  type: "info",
 };
 
 export default Alert;
