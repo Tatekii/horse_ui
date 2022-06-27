@@ -2,7 +2,7 @@ import {
   AnchorButtonProps,
   ButtonProps,
   NativeButtonProps,
-} from "./button.types";
+} from "./types";
 import classNames from "classnames";
 import { omit } from "@/utils/types.utils";
 

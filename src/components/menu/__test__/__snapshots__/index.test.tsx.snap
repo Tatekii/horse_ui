@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Menu render default menu and menu-item 1`] = `
+<ul
+  class="menu menu-horizontal"
+  data-testid="test-menu"
+>
+  <li
+    class="menu-item is-active"
+  >
+    normal item
+  </li>
+</ul>
+`;
+
+exports[`Testing Menu render vertical menu correctly 1`] = `
+<ul
+  class="menu menu-vertical"
+  data-testid="test-menu"
+>
+  <li
+    class="menu-item is-active"
+  >
+    normal item
+  </li>
+</ul>
+`;

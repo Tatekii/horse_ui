@@ -1,7 +1,7 @@
-import getDataOrAriaProps from "@/utils";
+import {getDataOrAriaProps} from "@/utils";
 import classNames from "classnames";
-import Button from "../button/button.component";
-import { AlertProps } from "./alert.types";
+import Button from "../button";
+import { AlertProps } from "./types";
 
 const Alert: React.FC<AlertProps> = ({
   description,

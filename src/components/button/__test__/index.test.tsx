@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Button from "../button.component";
+import Button from "..";
 import { mountTest } from "@/test/shared";
 import { SizeType } from "@/components/config-provider/size";
 

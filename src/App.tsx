@@ -1,6 +1,8 @@
-import React from "react";
-import Button from "./components/button/button.component";
-import Alert from "./components/alert/alert";
+import Button from "./components/button";
+import Alert from "./components/alert";
+import Menu from "./components/menu";
+import MenuItem from "./components/menu/MenuItem";
+import SubMenu from "./components/menu/SubMenu";
 
 function App() {
   const clickOne = () => {
@@ -14,7 +16,6 @@ function App() {
       <Alert
         type="info"
         closeable
-        closeText="CLOSE"
         message="here is message"
         description="here is description"
         closeCallback={() => console.log("close call back")}
@@ -28,12 +29,45 @@ function App() {
       >
         SHOW ALERT
       </Button>
-      <Button btnType="link" href="http://www.google.com" target="blank">
-        LINK Normal
+      <Button btnType="danger" size="small">
+        danger small
       </Button>
-      <Button btnType="link" size="small" href="http://www.google.com">
-        LINK small
-      </Button>
+      <Menu
+        onSelect={(i) => {
+          console.log("select index=> ", i);
+        }}
+        defaultIndex='0'
+        expandMenus={['2']}
+      >
+        <MenuItem>item1</MenuItem>
+        <MenuItem disabled>disabled item</MenuItem>
+        <SubMenu title="submenu">
+          <MenuItem>drop1</MenuItem>
+          <MenuItem>drop2</MenuItem>
+          <MenuItem>drop3</MenuItem>
+        </SubMenu>
+      </Menu>
+      <Menu
+        onSelect={(i) => {
+          console.log("select index=> ", i);
+        }}
+        defaultIndex='1'
+        mode="vertical"
+        expandMenus={['3']}
+      >
+        <MenuItem>item1</MenuItem>
+        <MenuItem>item2</MenuItem>
+        <SubMenu title="submenu">
+          <MenuItem>drop1</MenuItem>
+          <MenuItem>drop2</MenuItem>
+          <MenuItem>drop3</MenuItem>
+        </SubMenu>
+        <SubMenu title="submenu2">
+          <MenuItem>drop2-1</MenuItem>
+          <MenuItem>drop2-2</MenuItem>
+          <MenuItem>drop2-3</MenuItem>
+        </SubMenu>
+      </Menu>
     </>
   );
 }
