@@ -1,5 +1,6 @@
 import { SizeType } from "../config-provider/size";
 import { tuple } from "@/utils/types.utils";
+import React from "react";
 
 
 const AlertTypes = tuple("success","info","warning","error",)
@@ -17,4 +18,5 @@ export interface AlertProps {
   role?: string;
   style?: React.CSSProperties;
   className?: string;
+  children?:React.ReactNode
 }

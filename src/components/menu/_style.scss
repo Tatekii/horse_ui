@@ -6,7 +6,7 @@
   list-style: none;
   border-bottom: $menu-border-width solid $menu-border-color;
   box-shadow: $menu-box-shadow;
-  > .menu-item {
+  >.menu-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
     cursor: pointer;
     transition: $menu-transition;
@@ -25,39 +25,34 @@
       border-bottom: $menu-item-active-border-width solid
         $menu-item-active-color;
     }
-  }
-  .submenu-item {
-    position: relative;
-    .submenu-title {
-      display: flex;
-      align-items: center;
-    }
-    .arrow-icon {
-      transition: transform 0.25s ease-in-out;
-      margin-left: 3px;
-    }
-    &:hover {
+
+    &.submenu-item {
+      position: relative;
+      .submenu-title {
+        display: flex;
+        align-items: center;
+      }
       .arrow-icon {
-        transform: rotate(180deg);
+        transition: transform 0.25s ease-in-out;
+        margin-left: 3px;
+      }
+      &:hover {
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
       }
     }
   }
-  .is-vertical {
-    .arrow-icon {
-      transform: rotate(0deg) !important;
-    }
-  }
-  .is-vertical.is-opened {
-    .arrow-icon {
-      transform: rotate(180deg) !important;
-    }
-  }
+
   .submenu {
-    display: none;
+    // css transition unmount
+    // display: none;
+    // &.menu-opened {
+    //   display: block;
+    // }
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
-    //transition: $menu-transition;
     .menu-item {
       padding: $menu-item-padding-y $menu-item-padding-x;
       cursor: pointer;
@@ -70,10 +65,9 @@
       }
     }
   }
-  .submenu.menu-opened {
-    display: block;
-  }
 }
+
+// 横向菜单
 .menu-horizontal {
   > .menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
@@ -90,6 +84,7 @@
     box-shadow: $submenu-box-shadow;
   }
 }
+// 纵向菜单
 .menu-vertical {
   flex-direction: column;
   border-bottom: 0px;
@@ -102,8 +97,16 @@
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
+
+    &.submenu-item {
+      .arrow-icon {
+        transform: rotate(0deg) !important;
+      }
+    }
+    &.submenu-item.is-opened {
+      .arrow-icon {
+        transform: rotate(180deg) !important;
+      }
+    }
   }
-  // .submenu.is-opened{
-  //   border-left: $menu-item-active-border-width solid transparent;;
-  // }
 }

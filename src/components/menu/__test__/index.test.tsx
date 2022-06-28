@@ -1,22 +1,12 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen} from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 import Menu from "../index";
 import MenuItem from "../MenuItem";
 import SubMenu from "../SubMenu";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
-const createStyleFile = () => {
-  const cssFile: string = `
-    .menu-item{
-      display:none
-    }
-    .submenu.menu-opened{
-      display:block
-    }
-  `;
-  const style = document.createElement("style");
-  style.innerHTML = cssFile;
-  return style;
-};
+library.add(fas);
 
 describe("Testing Menu", () => {
   mountTest(() => (
@@ -149,14 +139,12 @@ describe("Testing Menu", () => {
       </Menu>
     );
     const subMenu = screen.getByText("sub1");
-    const list = screen.getByTestId("subs");
-    expect(list).not.toHaveClass("menu-opened");
-
+    expect(screen.queryByText("item1")).toBeNull();
     fireEvent.mouseOver(subMenu);
-    // // css trigger 有延时
-    await waitFor(() => {
-      expect(list).toHaveClass("menu-opened");
-    });
+
+    // // // css trigger 有延时
+
+    expect(await screen.findByText("item1")).toBeVisible();
   });
 
   it("click vertical Submenu should trigger dropdown", async () => {
@@ -168,24 +156,20 @@ describe("Testing Menu", () => {
       </Menu>
     );
     const subMenu = screen.getByText("sub1");
-    const list = screen.getByTestId("subs");
-    expect(list).not.toHaveClass("menu-opened");
+    const item = screen.queryByText("item1");
+    expect(item).toBeNull();
 
     fireEvent.mouseOver(subMenu);
     // // css trigger 有延时
-    await waitFor(() => {
-      expect(list).not.toHaveClass("menu-opened");
-    });
+    expect(item).toBeNull();
 
     fireEvent.click(subMenu);
-    await waitFor(() => {
-      expect(list).toHaveClass("menu-opened");
-    });
+    expect(await screen.findByText("item1")).toBeVisible();
   });
 
-  it("expandMenus props should trigger SubMenu dropdown", () => {
+  it("expandMenus props should trigger SubMenu dropdown", async () => {
     render(
-      <Menu expandMenus={["1"]} mode='vertical'>
+      <Menu expandMenus={["1"]} mode="vertical">
         <SubMenu title="sub1">
           <MenuItem>item1</MenuItem>
         </SubMenu>
@@ -194,8 +178,7 @@ describe("Testing Menu", () => {
         </SubMenu>
       </Menu>
     );
-    const lists = screen.getAllByTestId("subs");
-    expect(lists[0]).not.toHaveClass("menu-open");
-    expect(lists[1]).toHaveClass("menu-opened");
+    const target = await screen.findByText("item2");
+    expect(target).toBeVisible();
   });
 });

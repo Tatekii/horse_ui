@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import { MenuItemProps, SubMenuProps } from "./types";
 import { useMenuContext } from "./MenuContext";
+import Icon from "../icon";
+import Transition from "../transition";
 
 const SubMenu: React.FC<SubMenuProps> = ({
   index,
@@ -13,18 +15,18 @@ const SubMenu: React.FC<SubMenuProps> = ({
   // 延时关闭的计时器
   let timer = useRef<any>(null);
 
-  
   if (!context) {
     console.error("Warning: SubMenu using outside of Menu");
-      context = {
-        activeIndex: "0",
-        mode: "horizontal",
-        expandMenus: [],
-      };
+    context = {
+      activeIndex: "0",
+      mode: "horizontal",
+      expandMenus: [],
+    };
   }
-  const { activeIndex, mode,expandMenus } = context;
+  const { activeIndex, mode, expandMenus } = context;
   // 是否默认展开
-  const isExpand = (index && mode==='vertical') ? expandMenus.includes(index) : false
+  const isExpand =
+    index && mode === "vertical" ? expandMenus.includes(index) : false;
 
   const [isSubMenuOpen, setSubMenuOpen] = useState(isExpand);
 
@@ -57,7 +59,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
     mode === "horizontal"
       ? {
           onMouseEnter: (e: React.MouseEvent) => {
-            handleHover(e, true, 100);
+            handleHover(e, true, 300);
           },
           onMouseLeave: (e: React.MouseEvent) => {
             handleHover(e, false, 300);
@@ -92,13 +94,20 @@ const SubMenu: React.FC<SubMenuProps> = ({
       "menu-opened": isSubMenuOpen,
     });
 
-    return <ul className={subClasses} data-testid="subs">{ChildrenComponents}</ul>;
+    return (
+      <Transition animation="zoom-in-top" in={isSubMenuOpen} timeout={300}>
+        <ul className={subClasses}>
+          {ChildrenComponents}
+        </ul>
+      </Transition>
+    );
   };
 
   return (
     <li key={index} className={classes} {...hoverEvents}>
       <div className="submenu-title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon" />
       </div>
       {renderChildren()}
     </li>

@@ -3,8 +3,18 @@ import Alert from "./components/alert";
 import Menu from "./components/menu";
 import MenuItem from "./components/menu/MenuItem";
 import SubMenu from "./components/menu/SubMenu";
+import Icon from "./components/icon";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Transition from "@/components/transition";
+
+library.add(fas);
 
 function App() {
+  const [showAlert, setShowAlert] = useState<boolean>(false);
+
   const clickOne = () => {
     console.log("click one");
   };
@@ -13,18 +23,24 @@ function App() {
       <h1>Hello world</h1>
       <h2>Hello world</h2>
       <h3>Hello world</h3>
-      <Alert
-        type="info"
-        closeable
-        message="here is message"
-        description="here is description"
-        closeCallback={() => console.log("close call back")}
-      ></Alert>
+      <Transition in={showAlert} animation="zoom-in-left" timeout={400}>
+        <Alert
+          type="info"
+          closeable
+          closeText="关闭"
+          message="here is message"
+          description="here is description"
+          closeCallback={() => setShowAlert(false)}
+        >
+          <Button>123</Button>
+        </Alert>
+      </Transition>
+
       <Button>normal</Button>
       <Button
         btnType="primary"
         size="large"
-        onClick={clickOne}
+        onClick={() => setShowAlert(true)}
         className="custom-class"
       >
         SHOW ALERT
@@ -36,8 +52,8 @@ function App() {
         onSelect={(i) => {
           console.log("select index=> ", i);
         }}
-        defaultIndex='0'
-        expandMenus={['2']}
+        defaultIndex="0"
+        expandMenus={["2"]}
       >
         <MenuItem>item1</MenuItem>
         <MenuItem disabled>disabled item</MenuItem>
@@ -51,9 +67,9 @@ function App() {
         onSelect={(i) => {
           console.log("select index=> ", i);
         }}
-        defaultIndex='1'
+        defaultIndex="1"
         mode="vertical"
-        expandMenus={['3']}
+        expandMenus={["3"]}
       >
         <MenuItem>item1</MenuItem>
         <MenuItem>item2</MenuItem>
@@ -68,6 +84,9 @@ function App() {
           <MenuItem>drop2-3</MenuItem>
         </SubMenu>
       </Menu>
+
+      <hr />
+      <Icon theme="primary" icon="coffee" size="10x" />
     </>
   );
 }
