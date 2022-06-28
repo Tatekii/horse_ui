@@ -39,6 +39,9 @@
 
 @mixin alert-style($background) {
   background: lighten($background, 40%);
+  .alert-icon{
+    // border: 2px solid $background;
+  }
 }
 
 

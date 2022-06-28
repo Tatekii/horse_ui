@@ -1,6 +1,7 @@
 import { getDataOrAriaProps } from "@/utils";
 import classNames from "classnames";
 import Button from "../button";
+import Icon from "@/components/icon";
 import { AlertProps } from "./types";
 
 const Alert: React.FC<AlertProps> = ({
@@ -10,20 +11,16 @@ const Alert: React.FC<AlertProps> = ({
   style,
   closeable,
   closeCallback,
-  closeText,
   type,
   children,
+  showIcon,
   ...rest
 }) => {
   /** 关闭按钮的文字或者一个X */
   const renderCloseIcon = () =>
     closeable ? (
       <Button onClick={closeCallback} className="close-button">
-        {closeText ? (
-          <span className={`alert-close-text`}>{closeText}</span>
-        ) : (
-          "X"
-        )}
+        <Icon icon="close" size="lg"></Icon>
       </Button>
     ) : null;
 
@@ -37,12 +34,31 @@ const Alert: React.FC<AlertProps> = ({
     className
   );
 
+  const renderAlertIcon = () => {
+    if (!showIcon) return;
+    switch (type) {
+      case "success":
+        return <Icon icon="check" theme="success"></Icon>;
+      case "error":
+        return <Icon icon="xmark" theme="secondary"></Icon>;
+      case "warning":
+        return <Icon icon="triangle-exclamation" theme="warning"></Icon>;
+      default:
+        return <Icon icon="exclamation" theme="info"></Icon>;
+    }
+  };
+
   const dataOrAriaProps = getDataOrAriaProps(rest);
 
   return (
     <div className={classes} style={style} role="alert" {...dataOrAriaProps}>
       <div className={`alert-content`}>
-        {message ? <h4 className={`alert-message`}>{message}</h4> : null}
+        <>
+          <h4 className={`alert-message`}>
+            <span className="alert-icon">{renderAlertIcon()}</span>
+            {message}
+          </h4>
+        </>
         {description ? (
           <div className={`alert-description`}>{description}</div>
         ) : null}

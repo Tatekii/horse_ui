@@ -5,7 +5,7 @@ export type IconThemeType =
   | "secondary"
   | "success"
   | "info"
-  | "warning";
+  | "warning"
 
 export interface IconProps extends FontAwesomeIconProps {
   theme?: IconThemeType;
