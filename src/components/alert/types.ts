@@ -2,7 +2,7 @@ import { SizeType } from "../config-provider/size";
 import { tuple } from "@/utils/types.utils";
 import React from "react";
 
-const AlertTypes = tuple("success", "info", "warning", "error");
+export const AlertTypes = tuple("success", "info", "warning", "error");
 export type AlertType = typeof AlertTypes[number];
 
 export interface AlertProps {

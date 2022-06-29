@@ -1,11 +1,14 @@
 import { tuple } from "@/utils/types.utils";
 import { SizeType } from "../config-provider/size";
 
+
+
 // ant design 偷的
-const ButtonTypes = tuple("default", "primary", "link", "danger");
+export const ButtonTypes = tuple("default", "primary", "link", "danger");
 export type ButtonType = typeof ButtonTypes[number];
-const ButtonHTMLTypes = tuple("submit", "button", "reset");
+export const ButtonHTMLTypes = tuple("submit", "button", "reset");
 export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
+
 
 export interface BaseButtonProps {
   className?: string;
