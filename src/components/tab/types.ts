@@ -11,10 +11,10 @@ export interface TabProps {
 }
 
 export interface TabListItemProps {
-  index:number,
-  label:ReactNode,
-  changeActive:SelectedCallback,
-  disabled?:boolean
+  index: number;
+  label: ReactNode;
+  changeActive: SelectedCallback;
+  disabled?: boolean;
 }
 
 export interface TabPaneProps {
@@ -22,8 +22,8 @@ export interface TabPaneProps {
   tab: ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  disabled?:boolean;
-  children?:React.ReactNode
+  disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export type TabContextProps =

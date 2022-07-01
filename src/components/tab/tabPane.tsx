@@ -9,7 +9,7 @@ const TabPane: React.FC<TabPaneProps> = ({ index, children, ...restProps }) => {
     "is-active": index === activeIndex,
   });
   return (
-    <div className={classes} {...restProps} style={{display:'none'}}>
+    <div className={classes} {...restProps} style={{ display: "none" }}>
       {children}
     </div>
   );

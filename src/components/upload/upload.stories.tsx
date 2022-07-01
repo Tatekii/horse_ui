@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
-import { Upload } from "./";
+import Upload from "./";
 import Icon from "@/components/icon";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 

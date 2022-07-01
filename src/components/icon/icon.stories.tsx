@@ -1,29 +1,25 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Icon from "./index";
-import { ThemeTypes } from "../config-provider/theme";
-
 
 export default {
   title: "Icon",
   component: Icon,
-  argTypes:{},
+  argTypes: {},
 } as ComponentMeta<typeof Icon>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Icon> = (args) => (
-    <Icon {...args} />
-);
+const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   icon: "coffee",
   size: "1x",
 };
 
-export const Animated = Template.bind({})
+export const Animated = Template.bind({});
 Animated.args = {
-  icon:"car",
-  bounce:true,
-  size: '2x',
-  theme:'warning'
-}
+  icon: "car",
+  bounce: true,
+  size: "2x",
+  theme: "warning",
+};

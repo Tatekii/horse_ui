@@ -1,44 +1,42 @@
-import { fireEvent, render, screen} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 import Menu from "../index";
-import MenuItem from "../menuItem";
-import SubMenu from "../subMenu";
 
 describe("Testing Menu", () => {
   mountTest(() => (
     <Menu>
-      <MenuItem>normal item</MenuItem>
-      <MenuItem>
+      <Menu.Item>normal item</Menu.Item>
+      <Menu.Item>
         {undefined}
         {null}
-      </MenuItem>
-      <MenuItem disabled>disabled item</MenuItem>
-      <SubMenu title="sub1">
-        <MenuItem>1</MenuItem>
-        <MenuItem>2</MenuItem>
-      </SubMenu>
+      </Menu.Item>
+      <Menu.Item disabled>disabled item</Menu.Item>
+      <Menu.SubMenu title="sub1">
+        <Menu.Item>1</Menu.Item>
+        <Menu.Item>2</Menu.Item>
+      </Menu.SubMenu>
     </Menu>
   ));
 
   mountTest(() => (
     <Menu mode="vertical">
-      <MenuItem>normal item</MenuItem>
-      <MenuItem>
+      <Menu.Item>normal item</Menu.Item>
+      <Menu.Item>
         {undefined}
         {null}
-      </MenuItem>
-      <MenuItem disabled>disabled item</MenuItem>
-      <SubMenu title="sub1">
-        <MenuItem>1</MenuItem>
-        <MenuItem>2</MenuItem>
-      </SubMenu>
+      </Menu.Item>
+      <Menu.Item disabled>disabled item</Menu.Item>
+      <Menu.SubMenu title="sub1">
+        <Menu.Item>1</Menu.Item>
+        <Menu.Item>2</Menu.Item>
+      </Menu.SubMenu>
     </Menu>
   ));
 
-  it("render default menu and menu-item", () => {
+  it("render default menu", () => {
     render(
       <Menu>
-        <MenuItem>normal item</MenuItem>
+        <Menu.Item>normal item</Menu.Item>
       </Menu>
     );
     const element = screen.getByTestId("test-menu");
@@ -47,17 +45,17 @@ describe("Testing Menu", () => {
 
   it("render menu item outside of menu got warning", () => {
     const mockWarn = jest.spyOn(console, "error").mockImplementation(() => {});
-    render(<MenuItem index="0">alone item</MenuItem>);
+    render(<Menu.Item index="0">alone item</Menu.Item>);
     expect(mockWarn).toBeCalledWith("Warning: MenuItem using outside of Menu");
     mockWarn.mockRestore();
   });
 
-  it("render submenu outside of menu got warning", () => {
+  it("render subMenu outside of menu got warning", () => {
     const mockWarn = jest.spyOn(console, "error").mockImplementation(() => {});
     render(
-      <SubMenu index="0" title="sub menu">
+      <Menu.SubMenu index="0" title="sub menu">
         alone item
-      </SubMenu>
+      </Menu.SubMenu>
     );
     expect(mockWarn).toBeCalledWith("Warning: SubMenu using outside of Menu");
     mockWarn.mockRestore();
@@ -79,9 +77,9 @@ describe("Testing Menu", () => {
     const OtherCom = () => <h6>other</h6>;
     render(
       // {*/ <Menu> */}
-      <SubMenu title="test">
+      <Menu.SubMenu title="test">
         <OtherCom></OtherCom>
-      </SubMenu>
+      </Menu.SubMenu>
       // {/* </Menu> */}
     );
     expect(mockWarn).toBeCalledWith("Warning: Invalid child node of SubMenu");
@@ -92,8 +90,8 @@ describe("Testing Menu", () => {
     const mockFn = jest.fn();
     render(
       <Menu onSelect={mockFn}>
-        <MenuItem>item1</MenuItem>
-        <MenuItem>item2</MenuItem>
+        <Menu.Item>item1</Menu.Item>
+        <Menu.Item>item2</Menu.Item>
       </Menu>
     );
     const target = screen.getByText("item2");
@@ -105,8 +103,8 @@ describe("Testing Menu", () => {
     const mockFn = jest.fn();
     render(
       <Menu onSelect={mockFn}>
-        <MenuItem>item1</MenuItem>
-        <MenuItem disabled>item2</MenuItem>
+        <Menu.Item>item1</Menu.Item>
+        <Menu.Item disabled>item2</Menu.Item>
       </Menu>
     );
     const target = screen.getByText("item2");
@@ -119,7 +117,7 @@ describe("Testing Menu", () => {
   it("render vertical menu correctly", () => {
     render(
       <Menu mode="vertical">
-        <MenuItem>normal item</MenuItem>
+        <Menu.Item>normal item</Menu.Item>
       </Menu>
     );
     const element = screen.getByTestId("test-menu");
@@ -129,9 +127,9 @@ describe("Testing Menu", () => {
   it("hover horizontal SubMenu should trigger dropdown", async () => {
     render(
       <Menu>
-        <SubMenu title="sub1">
-          <MenuItem>item1</MenuItem>
-        </SubMenu>
+        <Menu.SubMenu title="sub1">
+          <Menu.Item>item1</Menu.Item>
+        </Menu.SubMenu>
       </Menu>
     );
     const subMenu = screen.getByText("sub1");
@@ -143,12 +141,12 @@ describe("Testing Menu", () => {
     expect(await screen.findByText("item1")).toBeVisible();
   });
 
-  it("click vertical Submenu should trigger dropdown", async () => {
+  it("click vertical SubMenu should trigger dropdown", async () => {
     render(
       <Menu mode="vertical">
-        <SubMenu title="sub1">
-          <MenuItem>item1</MenuItem>
-        </SubMenu>
+        <Menu.SubMenu title="sub1">
+          <Menu.Item>item1</Menu.Item>
+        </Menu.SubMenu>
       </Menu>
     );
     const subMenu = screen.getByText("sub1");
@@ -166,12 +164,12 @@ describe("Testing Menu", () => {
   it("expandMenus props should trigger SubMenu dropdown", async () => {
     render(
       <Menu expandMenus={["1"]} mode="vertical">
-        <SubMenu title="sub1">
-          <MenuItem>item1</MenuItem>
-        </SubMenu>
-        <SubMenu title="sub2">
-          <MenuItem>item2</MenuItem>
-        </SubMenu>
+        <Menu.SubMenu title="sub1">
+          <Menu.Item>item1</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu title="sub2">
+          <Menu.Item>item2</Menu.Item>
+        </Menu.SubMenu>
       </Menu>
     );
     const target = await screen.findByText("item2");

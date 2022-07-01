@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Progress from ".";
+import Progress from "./index";
 
 export default {
   title: "Progress",
@@ -12,11 +12,10 @@ const Template: ComponentStory<typeof Progress> = (args) => (
   <Progress {...args}></Progress>
 );
 
-
 export const Default = Template.bind({});
 Default.args = {
   percent: 50,
   strokeHeight: 20,
   showText: true,
-  theme:"success"
+  theme: "success",
 };

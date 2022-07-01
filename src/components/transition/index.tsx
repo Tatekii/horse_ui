@@ -18,8 +18,11 @@ const Transition: React.FC<TransitionProps> = ({
   );
 };
 
+Transition.displayName = "Transition";
+
 Transition.defaultProps = {
   unmountOnExit: true,
   appear: true,
 };
+
 export default Transition;

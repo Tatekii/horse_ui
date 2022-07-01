@@ -11,8 +11,7 @@ const Tab: React.FC<TabProps> = ({
   onChange,
   ...restProps
 }) => {
-
-  const [currentActive,setActive] = useState<number>(defaultActive||0)
+  const [currentActive, setActive] = useState<number>(defaultActive || 0);
 
   const classes = classNames("tab", className, {});
 
@@ -25,11 +24,18 @@ const Tab: React.FC<TabProps> = ({
       const name = childElement.type?.displayName;
 
       if (name === "TabPane") {
-        const {tab,disabled} = childElement.props
+        const { tab, disabled } = childElement.props;
         // return React.cloneElement(childElement, { index });
-        return <TabListItem label={tab} index={index} changeActive={setActive} disabled={disabled}></TabListItem>;
+        return (
+          <TabListItem
+            label={tab}
+            index={index}
+            changeActive={setActive}
+            disabled={disabled}
+          ></TabListItem>
+        );
       } else {
-        console.error("Warning: Invalid child node of Tabs");
+        console.error("Warning: Invalid child node of Tab");
       }
     });
   };
@@ -45,21 +51,20 @@ const Tab: React.FC<TabProps> = ({
       if (name === "TabPane") {
         return React.cloneElement(childElement, { index });
       } else {
-        console.error("Warning: Invalid child node of Tabs");
+        console.error("Warning: Invalid child node of Tab");
       }
     });
-  }
+  };
 
   return (
     <div className={classes} {...restProps}>
-      <TabContext.Provider
-        value={{ activeIndex: currentActive, onChange }}
-      >
+      <TabContext.Provider value={{ activeIndex: currentActive, onChange }}>
         <ul className="tab-list">
           {/* render tab list  */}
           {renderTabList()}
         </ul>
-        <div className="tab-container">{/* render tabpane */}
+        <div className="tab-container">
+          {/* render tabpane */}
           {renderTabContent()}
         </div>
       </TabContext.Provider>
@@ -67,4 +72,5 @@ const Tab: React.FC<TabProps> = ({
   );
 };
 
+Tab.displayName = "Tab";
 export default Tab;

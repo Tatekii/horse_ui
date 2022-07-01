@@ -1,4 +1,4 @@
-import AutoComplete from "..";
+import AutoComplete from "@/components/auto-complete";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 import { AutoCompleteProps } from "../types";

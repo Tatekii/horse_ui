@@ -1,20 +1,19 @@
 import Tab from "..";
-import TabPane from "../tabPane";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 
 describe("Testing Tab", () => {
   mountTest(() => (
     <Tab>
-      <TabPane tab="tab1">tab1 content</TabPane>
+      <Tab.TabPane tab="tab1">tab1 content</Tab.TabPane>
     </Tab>
   ));
 
   it("default active pane should visible", () => {
     render(
       <Tab defaultActive={1}>
-        <TabPane tab="t1">t1 content</TabPane>
-        <TabPane tab="t2">t2 content</TabPane>
+        <Tab.TabPane tab="t1">t1 content</Tab.TabPane>
+        <Tab.TabPane tab="t2">t2 content</Tab.TabPane>
       </Tab>
     );
     const target = screen.getByText("t2 content");
@@ -26,8 +25,8 @@ describe("Testing Tab", () => {
   it("click tab should change active pane", () => {
     render(
       <Tab defaultActive={1}>
-        <TabPane tab="t1">t1 content</TabPane>
-        <TabPane tab="t2">t2 content</TabPane>
+        <Tab.TabPane tab="t1">t1 content</Tab.TabPane>
+        <Tab.TabPane tab="t2">t2 content</Tab.TabPane>
       </Tab>
     );
     fireEvent.click(screen.getByText("t1"));
@@ -39,22 +38,22 @@ describe("Testing Tab", () => {
     const mockFn = jest.fn();
     render(
       <Tab onChange={mockFn}>
-        <TabPane tab="t1"></TabPane>
-        <TabPane tab="t2"></TabPane>
+        <Tab.TabPane tab="t1"></Tab.TabPane>
+        <Tab.TabPane tab="t2"></Tab.TabPane>
       </Tab>
     );
     fireEvent.click(screen.getByText("t1"));
     expect(mockFn).toBeCalledWith(0);
   });
 
-  it('invalid node inside tab got warning',()=>{
-    const mockWarn = jest.spyOn(console,'error').mockImplementation(() => {});
+  it("invalid node inside tab got warning", () => {
+    const mockWarn = jest.spyOn(console, "error").mockImplementation(() => {});
     render(
       <Tab>
         <div>123</div>
       </Tab>
-    )
-    expect(mockWarn).toBeCalledWith("Warning: Invalid child node of Tabs")
-    mockWarn.mockRestore()
-  })
+    );
+    expect(mockWarn).toBeCalledWith("Warning: Invalid child node of Tab");
+    mockWarn.mockRestore();
+  });
 });

@@ -64,7 +64,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     </ul>
   );
 };
-
+Menu.displayName = "Menu";
 Menu.defaultProps = {
   defaultIndex: "0",
   mode: "horizontal",

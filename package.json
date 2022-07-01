@@ -1,41 +1,51 @@
 {
   "name": "horse_ui",
   "version": "0.1.0",
-  "private": true,
+  "description": "React components library",
+  "author": "Tatekii Ma",
+  "private": false,
+  "main": "./build/index.js",
+  "module": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tatekii/horse_ui"
+  },
+  "files": [
+    "build"
+  ],
   "dependencies": {
-    "@craco/craco": "^6.4.3",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@types/react-transition-group": "^4.4.5",
     "axios": "^0.27.2",
-    "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.2",
-    "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "react-transition-group": "^4.4.2",
-    "sass": "^1.52.3",
-    "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "classnames": "^2.3.1",
+    "react-transition-group": "^4.4.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "clean": "rm -rf ./build",
+    "build": "yarn clean && yarn build-js && yarn build-css ",
+    "build-js": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build-css": "sass ./src/styles/index.scss ./build/index.css",
     "test": "craco test",
+    "test:nowatch": "cross-env CI=true craco test",
     "eject": "craco eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepublish": "yarn lint && yarn test:nowatch && yarn build",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -66,17 +76,13 @@
       "last 1 safari version"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write --ignore-unknown"
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^6.4.3",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",
@@ -87,11 +93,30 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "@types/classnames": "^2.3.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-transition-group": "^4.4.5",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
+    "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.52.3",
     "storybook-addon-sass-postcss": "^0.1.3",
+    "tsc-alias": "^1.6.11",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.4.2",
     "webpack": "^5.73.0"
   },
   "jest": {
