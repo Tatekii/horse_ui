@@ -23,7 +23,7 @@ describe("Testing Button", () => {
     const mockWarn = jest.spyOn(console, "error").mockImplementation(() => {});
     const size = "wrong size" as any as SizeType;
     render(<Button size={size} />);
-    expect(mockWarn).toHaveBeenCalledWith("Button Invalid prop [size]");
+    expect(mockWarn).toHaveBeenCalledWith("Invalid prop [size]:",size);
     mockWarn.mockRestore();
   });
 

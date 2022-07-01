@@ -1,12 +1,8 @@
 import { fireEvent, render, screen} from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 import Menu from "../index";
-import MenuItem from "../MenuItem";
-import SubMenu from "../SubMenu";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-
-library.add(fas);
+import MenuItem from "../menuItem";
+import SubMenu from "../subMenu";
 
 describe("Testing Menu", () => {
   mountTest(() => (

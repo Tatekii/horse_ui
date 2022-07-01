@@ -1,5 +1,5 @@
 import Tab from "..";
-import TabPane from "../TabPane";
+import TabPane from "../tabPane";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { mountTest } from "@/test/shared";
 

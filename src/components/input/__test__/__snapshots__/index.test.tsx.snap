@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Input should render default input 1`] = `
+<div
+  class="input-wrapper"
+  data-testid="input-wrapper"
+>
+  <input
+    class="input-inner"
+  />
+</div>
+`;
+
+exports[`Testing Input should support size 1`] = `
+<div
+  class="input-wrapper input-size-lg"
+  data-testid="input-wrapper"
+>
+  <input
+    class="input-inner"
+  />
+</div>
+`;

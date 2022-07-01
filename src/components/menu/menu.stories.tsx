@@ -1,8 +1,8 @@
 import React from "react";
 import Menu from ".";
-import MenuItem from "./MenuItem";
+import MenuItem from "./menuItem";
 import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react";
-import SubMenu from "./SubMenu";
+import SubMenu from "./subMenu";
 import { action } from "@storybook/addon-actions";
 
 const Default = () => (

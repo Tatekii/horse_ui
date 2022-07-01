@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { MenuItemProps, MenuProps } from "./types";
-import { MenuContext } from "./MenuContext";
+import { MenuContext } from "./menuContext";
 import { useState } from "react";
 import React from "react";
 

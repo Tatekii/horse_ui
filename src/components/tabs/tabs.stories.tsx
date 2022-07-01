@@ -1,5 +1,5 @@
 import Tab from ".";
-import TabPane from "./TabPane";
+import TabPane from "./tabPane";
 import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react";
 import Icon from "../icon";
 

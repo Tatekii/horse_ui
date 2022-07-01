@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import { TabContext } from "./TabContext";
+import { TabContext } from "./tabContext";
 import { TabPaneProps, TabProps } from "./types";
-import TabListItem from "./TabListItem";
+import TabListItem from "./tabListItem";
 
 const Tab: React.FC<TabProps> = ({
   defaultActive,

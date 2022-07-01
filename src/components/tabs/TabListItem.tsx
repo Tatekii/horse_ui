@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTabContext } from "./TabContext";
+import { useTabContext } from "./tabContext";
 import { TabListItemProps } from "./types";
 
 const TabListItem: React.FC<TabListItemProps> = ({

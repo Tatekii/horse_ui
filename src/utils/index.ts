@@ -8,4 +8,21 @@ export const getDataOrAriaProps = (props: any) => {
     }
     return prev;
   }, {});
-}
+};
+
+// 格式化size到class名 => large => lg
+export const sizeCls = (size?: string) => {
+  switch (size) {
+    case "large":
+      return "lg";
+    case "small":
+      return "sm";
+    case "middle":
+      return "md";
+    case undefined:
+      return "md";
+    default:
+      console.error("Invalid prop [size]:", size);
+      return "";
+  }
+};

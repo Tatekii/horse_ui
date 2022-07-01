@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTabContext } from "./TabContext";
+import { useTabContext } from "./tabContext";
 import { TabPaneProps } from "./types";
 
 const TabPane: React.FC<TabPaneProps> = ({ index, children, ...restProps }) => {

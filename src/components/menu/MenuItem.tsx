@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { MenuItemProps } from "./types";
-import { useMenuContext } from "./MenuContext";
+import { useMenuContext } from "./menuContext";
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { index, disabled, className, style, children } = props;

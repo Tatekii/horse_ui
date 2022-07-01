@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import { MenuItemProps, SubMenuProps } from "./types";
-import { useMenuContext } from "./MenuContext";
+import { useMenuContext } from "./menuContext";
 import Icon from "../icon";
 import Transition from "../transition";
 
