@@ -1,19 +1,12 @@
 import React from "react";
 import axios from "axios";
-import {
-  render,
-  fireEvent,
-  createEvent,
-  screen,
-} from "@testing-library/react";
+import { render, fireEvent, createEvent, screen } from "@testing-library/react";
 import Upload from "../index";
 import { UploadProps } from "../types";
 import { mountTest } from "@/test/shared";
 
-jest.mock("../../icon/index.tsx", () => {
-  return ({ icon, onClick }) => {
-    return <span onClick={onClick}>{icon}</span>;
-  };
+jest.mock("../../icon/index.tsx", () => ({ icon, onClick }: any) => {
+  return <span onClick={onClick}>{icon}</span>;
 });
 
 jest.mock("axios");
@@ -87,20 +80,20 @@ describe("Testing upload", () => {
     mockedAxios.post.mockResolvedValue({ data: "cool" });
 
     const uploadArea = screen.getByText("Click to upload");
-    fireEvent.dragOver(uploadArea)
-    expect(uploadArea).toHaveClass('is-dragover')
-    fireEvent.dragLeave(uploadArea)
-    expect(uploadArea).not.toHaveClass('is-dragover')
-    const mockDropEvent = createEvent.drop(uploadArea)
+    fireEvent.dragOver(uploadArea);
+    expect(uploadArea).toHaveClass("is-dragover");
+    fireEvent.dragLeave(uploadArea);
+    expect(uploadArea).not.toHaveClass("is-dragover");
+    const mockDropEvent = createEvent.drop(uploadArea);
 
     Object.defineProperty(mockDropEvent, "dataTransfer", {
       value: {
-        files: [testFile]
-      }
-    })
+        files: [testFile],
+      },
+    });
 
-    fireEvent(uploadArea, mockDropEvent)
-    expect(await screen.findByText('test.png')).toBeInTheDocument()
-    expect(testProps.onSuccess).toHaveBeenCalledWith('cool', testFile)
+    fireEvent(uploadArea, mockDropEvent);
+    expect(await screen.findByText("test.png")).toBeInTheDocument();
+    expect(testProps.onSuccess).toHaveBeenCalledWith("cool", testFile);
   });
 });

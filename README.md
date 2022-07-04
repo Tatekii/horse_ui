@@ -8,6 +8,7 @@
 - 清理`yarn clean`
 - 测试`yarn test`
 - storybook live`yarn storybook`
+- 集成`pre-commit`自动化测试代码美化
 
 ## TODO
 

@@ -40,11 +40,11 @@
     "build-js": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "build-css": "sass ./src/styles/index.scss ./build/index.css",
     "test": "craco test",
-    "test:nowatch": "cross-env CI=true craco test",
+    "test:nowatch": "cross-env CI=true yarn test",
     "eject": "craco eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "prepublish": "yarn lint && yarn test:nowatch && yarn build",
+    "prepublishOnly": "yarn lint && yarn test:nowatch && yarn build",
     "prepare": "husky install"
   },
   "eslintConfig": {

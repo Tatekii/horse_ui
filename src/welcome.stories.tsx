@@ -7,7 +7,12 @@ storiesOf("Welcome page", module).add(
     return (
       <>
         <h1>Horse UI</h1>
-        <h3>Checkout README</h3>
+        <ul>
+          <li>一个练习的react小型组件库</li>
+          <li>
+            <code>https://github.com/Tatekii/horse_ui</code>
+          </li>
+        </ul>
       </>
     );
   },
