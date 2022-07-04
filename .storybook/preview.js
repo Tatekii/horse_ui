@@ -13,14 +13,3 @@ const loaderFn = () => {
 
 // automatically import all files ending in *.stories.js
 configure(loaderFn, module);
-
-export const parameters = {
-  info: { inline: true, header: false },
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-};
