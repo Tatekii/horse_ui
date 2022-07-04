@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "./";
+import Menu from "./index";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 

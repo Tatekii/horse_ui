@@ -43,7 +43,7 @@
     "test:nowatch": "cross-env CI=true yarn test",
     "eject": "craco eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "build-storybook": "NODE_ENV=production build-storybook -s public --quiet",
     "prepublishOnly": "yarn lint && yarn test:nowatch && yarn build",
     "prepare": "husky install"
   },
