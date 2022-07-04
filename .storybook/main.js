@@ -1,7 +1,11 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
+
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
   logLevel: "debug",
   addons: [
     "@storybook/addon-links",
@@ -16,20 +20,19 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
-      // new TsconfigPathsPlugin({
-      //   extensions: config.resolve.extensions,
-      // }),
+      new TsconfigPathsPlugin({
+        extensions: config.resolve.extensions,
+      }),
     ];
     return config;
   },
   typescript: {
     check: false,
     checkOptions: {},
-    reactDocgen: "react-docgen-typescript",
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
 };
