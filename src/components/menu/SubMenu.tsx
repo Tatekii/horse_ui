@@ -40,9 +40,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
   const handleClickSubMenu = (e: React.MouseEvent) => {
     e.preventDefault();
     // 判断一次是不是
-    // if (e.target === subMenuRef.current) {
     setSubMenuOpen((v) => !v);
-    // }
   };
 
   /* 处理鼠标进入/离开submenu时控制列表打开/关闭 */
@@ -96,9 +94,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
 
     return (
       <Transition animation="zoom-in-top" in={isSubMenuOpen} timeout={300}>
-        <ul className={subClasses}>
-          {ChildrenComponents}
-        </ul>
+        <ul className={subClasses}>{ChildrenComponents}</ul>
       </Transition>
     );
   };
