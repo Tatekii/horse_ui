@@ -33,15 +33,15 @@
     "react-dom": ">=16.8.0"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "react-scripts start",
     "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
     "clean": "rm -rf ./build",
     "build": "yarn clean && yarn build-js && yarn build-css ",
     "build-js": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "build-css": "sass ./src/styles/index.scss ./build/index.css",
-    "test": "craco test",
+    "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true yarn test",
-    "eject": "craco eject",
+    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "NODE_ENV=production build-storybook -s public --quiet",
     "prepublishOnly": "yarn lint && yarn test:nowatch && yarn build",
@@ -82,7 +82,6 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^6.4.3",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",

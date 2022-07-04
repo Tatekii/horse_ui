@@ -1,7 +1,7 @@
 import { AnchorButtonProps, ButtonProps, NativeButtonProps } from "./types";
 import classNames from "classnames";
-import { omit } from "@/utils/types.utils";
-import { sizeCls } from "@/utils";
+import { omit } from "../../utils/types.utils";
+import { sizeCls } from "../../utils";
 
 const Button: React.FC<ButtonProps> = (props) => {
   const {

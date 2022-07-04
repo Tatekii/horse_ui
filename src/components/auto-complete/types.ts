@@ -1,7 +1,5 @@
-import { InputProps } from "@/components/input/types";
+import { InputProps } from "../input/types";
 import { ReactElement } from "react";
-
-
 
 interface DataSourceObject {
   value: string;
@@ -9,8 +7,9 @@ interface DataSourceObject {
 
 export type DataSourceType<T = {}> = T & DataSourceObject;
 
-export type FetchForSuggestion = (arg0: string) => DataSourceType[] | Promise<DataSourceType[]>
-
+export type FetchForSuggestion = (
+  arg0: string
+) => DataSourceType[] | Promise<DataSourceType[]>;
 
 // type Test = DataSourceObject & {}
 // let test:Test = {value:'s'}
@@ -21,7 +20,6 @@ export type FetchForSuggestion = (arg0: string) => DataSourceType[] | Promise<Da
 // }
 
 // const testSOurce:DataSourceType<{}> = {value:'xxx'}
-
 
 export interface AutoCompleteProps extends Omit<InputProps, "onSelect"> {
   fetchSuggestions: FetchForSuggestion;

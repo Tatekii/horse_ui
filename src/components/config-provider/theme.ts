@@ -1,4 +1,4 @@
-import { tuple } from "@/utils/types.utils";
+import { tuple } from "../../utils/types.utils";
 
 export const ThemeTypes = tuple(
   "primary",

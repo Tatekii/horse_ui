@@ -1,6 +1,6 @@
 import Progress from "../progress";
 import { render } from "@testing-library/react";
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 
 describe("Testing progress", () => {
   mountTest(() => <Progress percent={50} />);

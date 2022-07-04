@@ -7,9 +7,9 @@ import React, {
   useRef,
 } from "react";
 import classNames from "classnames";
-import Input from "@/components/input";
-import Icon from "@/components/icon";
-import Transition from "@/components/transition";
+import Input from "../input";
+import Icon from "../icon";
+import Transition from "../transition";
 import useDebounce from "../../hooks/useDebounce";
 import useClickOutside from "../../hooks/useClickOutside";
 import { AutoCompleteProps, DataSourceType } from "./types";

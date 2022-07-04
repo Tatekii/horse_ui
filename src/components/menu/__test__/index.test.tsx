@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 import Menu from "../index";
 
 describe("Testing Menu", () => {

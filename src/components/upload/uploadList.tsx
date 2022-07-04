@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import Icon from "@/components/icon";
-import Progress from "@/components/progress";
+import Icon from "../icon";
+import Progress from "../progress";
 import { UploadListProps } from "./types";
 
 export const UploadList: FC<UploadListProps> = ({ fileList, onRemove }) => {

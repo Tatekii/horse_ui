@@ -3,7 +3,7 @@ import axios from "axios";
 import { render, fireEvent, createEvent, screen } from "@testing-library/react";
 import Upload from "../index";
 import { UploadProps } from "../types";
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 
 jest.mock("../../icon/index.tsx", () => ({ icon, onClick }: any) => {
   return <span onClick={onClick}>{icon}</span>;

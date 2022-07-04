@@ -10,6 +10,5 @@
     "strict": true
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.tsx", "src/**/*.stories.tsx", "src/setupTests.ts","src/test"],
-  "extends": "./path.json"
+  "exclude": ["src/**/*.test.tsx", "src/**/*.stories.tsx", "src/setupTests.ts","src/test"]
 }

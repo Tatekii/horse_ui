@@ -1,6 +1,6 @@
 import Tab from "..";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 
 describe("Testing Tab", () => {
   mountTest(() => (

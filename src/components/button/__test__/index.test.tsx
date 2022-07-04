@@ -1,8 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Button from "..";
-import { mountTest } from "@/test/shared";
-import { SizeType } from "@/components/config-provider/size";
+import { mountTest } from "../../../test/shared";
+import { SizeType } from "../../config-provider/size";
 
 describe("Testing Button", () => {
   mountTest(Button);
@@ -23,7 +23,7 @@ describe("Testing Button", () => {
     const mockWarn = jest.spyOn(console, "error").mockImplementation(() => {});
     const size = "wrong size" as any as SizeType;
     render(<Button size={size} />);
-    expect(mockWarn).toHaveBeenCalledWith("Invalid prop [size]:",size);
+    expect(mockWarn).toHaveBeenCalledWith("Invalid prop [size]:", size);
     mockWarn.mockRestore();
   });
 

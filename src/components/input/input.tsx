@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Icon from "../icon";
 import { InputProps } from "./types";
-import { sizeCls } from "@/utils";
+import { sizeCls } from "../../utils";
 
 const Input: React.FC<InputProps> = ({
   className,

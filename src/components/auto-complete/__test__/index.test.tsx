@@ -1,6 +1,6 @@
-import AutoComplete from "@/components/auto-complete";
+import AutoComplete from "../";
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 import { AutoCompleteProps } from "../types";
 import { FetchForSuggestion } from "../types";
 

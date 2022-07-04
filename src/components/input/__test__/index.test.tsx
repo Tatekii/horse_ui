@@ -1,7 +1,7 @@
-import { mountTest } from "@/test/shared";
+import { mountTest } from "../../../test/shared";
 import { render, screen } from "@testing-library/react";
-import Input from "@/components/input";
-import Icon from "@/components/icon";
+import Input from "../";
+import Icon from "../../icon";
 
 describe("Testing Input", () => {
   mountTest(() => <Input />);
@@ -32,9 +32,9 @@ describe("Testing Input", () => {
         <Input append={<Icon icon={"search"} />}></Input>
       </>
     );
-    const icon = screen.getByTestId('icon')
-    const target = screen.getByText('prepend')
-    expect(icon).toBeInTheDocument()
-    expect(target).toBeInTheDocument()
+    const icon = screen.getByTestId("icon");
+    const target = screen.getByText("prepend");
+    expect(icon).toBeInTheDocument();
+    expect(target).toBeInTheDocument();
   });
 });
