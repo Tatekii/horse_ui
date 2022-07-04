@@ -9,20 +9,19 @@ export default {
   component: Alert,
   argTypes: {
     type: {
-      name:'type',
-      type:{
-        name:'string',
-        required:false
+      name: "type",
+      type: {
+        name: "string",
+        required: false,
       },
-      defaultValue:'info',
       description: "alert type",
-      table:{
-        type:{
-          summary:'string',
+      table: {
+        type: {
+          summary: "string",
         },
-        defaultValues:{
-          summary:'info'
-        }
+        defaultValues: {
+          summary: "info",
+        },
       },
       options: AlertTypes,
       control: { type: "select" },
@@ -30,13 +29,11 @@ export default {
     size: {
       description: "size of alert",
       options: SizeTypes,
-      defaultValue: "middle",
       control: { type: "select" },
     },
     closeable: {
       description: "(close button)close alert manually",
       options: [true, false],
-      defaultValue: true,
       control: { type: "select" },
     },
     closeCallback: {
@@ -56,7 +53,6 @@ export default {
     showIcon: {
       description: "show alert type icon",
       options: [true, false],
-      defaultValue: false,
       control: {
         type: "select",
       },
